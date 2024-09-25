@@ -44,7 +44,7 @@ app.secret_key = 'supersecretkey'  # Usato per firmare la sessione
 mydb = mysql.connector.connect(
   host="localhost",
   user="root",
-  password="Ilfoggia1",
+  password="",
   database="PyDb"
 )
 
