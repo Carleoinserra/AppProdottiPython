@@ -28,5 +28,5 @@ pandas
 
 mysql
 
-[
-](https://www.youtube.com/watch?v=Yo7ngKeOOn4&list=PL9zh4eHRSCDmzSDdcANPGAwtUoxcpfp79&index=1)
+
+https://www.youtube.com/watch?v=Yo7ngKeOOn4&list=PL9zh4eHRSCDmzSDdcANPGAwtUoxcpfp79&index=1
