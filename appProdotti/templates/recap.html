@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<style>
+    img {
+
+        width: 150px;
+        height: 150px;
+    }
+
+
+</style>
+
+</head>
+<body>
+<div class = "container">
+<h3>Riassunto dell'ordine</h3>
+<table>
+
+        <thead>
+          <tr>
+              <th>Nome</th>
+              <th>Marca</th>
+              <th>Prezzo</th>
+
+              <th>Qnt</th>
+              <th>Img</th>
+          </tr>
+        </thead>
+  {% for p1 in lista %}
+        <tbody>
+          <tr>
+            <td>{{p1.nome}}</td>
+            <td>{{p1.marca}}</td>
+            <td>{{p1.prezzo}}</td>
+              <td>{{p1.getPezzi()}}</td>
+              <td><img src="{{p1.url}}"></td>
+          </tr>
+        </tbody>
+    {% endfor %}
+</table>
+    <h3> La somma totale da pagare è {{somma}} euro</h3>
+    </div>
+</body>
+</html>

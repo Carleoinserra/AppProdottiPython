@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems);
+  });
+
+  // Or with jQuery
+
+
+
+
+    </script>
+</head>
+<body>
+<div class = "container">
+<form action="/process" method = "POST">
+  <label>Inserisci nome prodotto:</label>
+ <input type = "text" name = "nome">
+    <br>
+   <label>Inserisci marca prodotto:</label>
+    <input type = "text" name = "marca">
+    <br>
+   <label>Inserisci prezzo prodotto:</label>
+    <input type = "text" name = "prezzo">
+    <br>
+ <label>Inserisci url prodotto:</label>
+    <input type = "text" name = "url">
+ <br>
+  <label>Inserisci pezzi prodotto:</label>
+    <input type = "number" name = "pezzi">
+  <br>
+    <input type = "submit" value = "invia">
+
+
+
+</form>
+<hr>
+
+    <form action = "/remove" method = "POST">
+
+        <label for="cars">Scegli il prodotto da rimuovere</label>
+
+<select name="prod" id="cars">
+
+    {% for prod in lista %}
+  <option value="{{prod[0]}}">{{prod[0]}}, {{prod[1]}}</option>
+
+    {% endfor %}
+
+</select>
+
+<input type = "submit" value = "Rimuovi">
+
+    </form>
+
+    <form action = "/search" method = "POST">
+
+        <label for="cars">Scegli la marca di prodotti da ricercare da un prodotto</label>
+
+<select name="marca" id="prodotti">
+
+    {% for prod in listaS %}
+  <option value="{{prod}}">{{prod}}</option>
+
+    {% endfor %}
+
+</select>
+
+<input type = "submit" value = "Cerca">
+
+    </form>
+    <hr>
+    <hr>
+     <form action = "/updatePezzi" method = "POST">
+
+        <label for="cars">Scegli il prodotto di cui vuoi aggiungere pezzi</label>
+
+<select name="prodID" id="pezzi">
+
+    {% for prod in lista %}
+  <option value="{{prod[0]}}">{{prod[0]}}, {{prod[1]}}</option>
+
+    {% endfor %}
+
+</select>
+         <input type = "number" name = "Npezzi">
+
+<input type = "submit" value = "Aggiungi">
+
+    </form>
+<body>
+    <h1>Statistiche di vendita</h1>
+    <img src="{{ url_for('plot_png') }}" alt="Grafico combinato a Barre e Torta">
+
+<h3>Dati di vendita</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Pezzi in magazzino</th>
+                <th scope="col">Pezzi venduti</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pr in lista %}
+            {% if pr[1]== prodottoMax %}
+        <tr style="background-color: yellow;">
+
+            {% elif pr[1]== prodottoMin %}
+        <tr style="background-color: palevioletred;">
+            {% else %}
+        <tr>
+      {% endif %}
+
+                    <th scope="row">{{ pr[0] }}</th>
+                    <td>{{ pr[1] }}</td>
+                    <td>{{ pr[2] }}</td>
+                    <td>{{ pr[3] }}</td>
+                    <td>{{ pr[4] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+</body>
+
+</div>
+</body>
+</html>
